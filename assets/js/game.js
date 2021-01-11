@@ -158,6 +158,18 @@ var endGame = function() {
     window.alert("You've lost your robot in battle.");
   }
 
+  var highScore = localStorage.getItem("highscore");
+  if (highScore === null) {
+    highScore = 0;
+  }
+  if (playerInfo.money > highScore) {
+    localStorage.setItem("highscore", playerInfo.money);
+    localStorage.setItem("name", playerInfo.name);
+    alert(playerInfo.name + " now has the high score of " + playerInfo.money +"!");
+  } else {
+    alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!")
+  }
+
    // ask player if they'd like to play again
   var playAgainConfirm = window.confirm("Would you like to play again?");
 
@@ -180,15 +192,15 @@ var shop = function() {
 
   // use switch to carry out action
   switch (shopOptionPrompt) {
-    case "1":
+    case 1:
       playerInfo.refillHealth();
       break;
 
-    case "2":
+    case 2:
       playerInfo.upgradeAttack();
       break;
 
-    case "3":
+    case 3:
       window.alert("Leaving the store.");
       break;
 
