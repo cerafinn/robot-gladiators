@@ -109,9 +109,8 @@ var fight = function(enemy) {
         break;
       }
 
+      //enemy is attacked
       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-
-      // remove enemy's health by subtracting the amount we set in the damage variable
       enemy.health = Math.max(0, enemy.health - damage);
       console.log(
         playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
@@ -120,11 +119,7 @@ var fight = function(enemy) {
       // check enemy's health
       if (enemy.health <= 0) {
         window.alert(enemy.name + " has died!");
-
-        // award player money for winning
         playerInfo.money = playerInfo.money + 20;
-
-        // leave while() loop since enemy is dead
         break;
       } else {
         window.alert(enemy.name + " still has " + enemy.health + " health left.");
